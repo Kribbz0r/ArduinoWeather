@@ -12,13 +12,13 @@ public class ArduinoWeather {
     private int brightnessValue;
     private String date;
     private String time;
-    private int temperature;
+    private String temperature;
 
     public ArduinoWeather() {
     }
 
     public ArduinoWeather(String brightnessNote, int brightnessValue, String date,
-            String time, int temperature) {
+            String time, String temperature) {
         this.brightnessNote = brightnessNote;
         this.brightnessValue = brightnessValue;
         this.date = date;
@@ -66,11 +66,11 @@ public class ArduinoWeather {
         this.time = time;
     }
 
-    public int getTemperature() {
+    public String getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(int temperature) {
+    public void setTemperature(String temperature) {
         this.temperature = temperature;
     }
 
