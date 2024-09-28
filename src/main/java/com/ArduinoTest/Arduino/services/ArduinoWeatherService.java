@@ -25,12 +25,13 @@ public class ArduinoWeatherService {
         System.out.println("Detta är dagens datum :" + formatDate.format(dateTime));
         System.out.println("Detta är tiden just nu : " + formatTime.format(dateTime));
 
-        String brightnessNote = setBrightnessNote(Integer.valueOf(arduinoWeatherData.getBrightness()));
+        String brightnessNote = setBrightnessNote(arduinoWeatherData.getBrightness());
         System.out.println("Jag är brightnessNote:  " + brightnessNote);
 
-        int brightnessFromArduinoAsInt = Integer.valueOf(arduinoWeatherData.getBrightness());
+        // int brightnessFromArduinoAsInt =
+        // Integer.valueOf(arduinoWeatherData.getBrightness());
 
-        ArduinoWeather arduinoWeather = new ArduinoWeather(brightnessNote, brightnessFromArduinoAsInt,
+        ArduinoWeather arduinoWeather = new ArduinoWeather(brightnessNote, arduinoWeatherData.getBrightness(),
                 formatDate.format(dateTime), formatTime.format(dateTime), arduinoWeatherData.getTemperature());
 
         return mongoOperations.save(arduinoWeather);

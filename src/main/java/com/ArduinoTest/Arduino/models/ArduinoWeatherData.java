@@ -2,30 +2,30 @@ package com.ArduinoTest.Arduino.models;
 
 public class ArduinoWeatherData {
 
-    private String brightness;
-    private String temperature;
+    private int brightness;
+    private int temperature;
 
     public ArduinoWeatherData() {
     }
 
-    public ArduinoWeatherData(String brightness, String temperature) {
+    public ArduinoWeatherData(int brightness, int temperature) {
         this.brightness = brightness;
         this.temperature = temperature;
     }
 
-    public String getBrightness() {
+    public int getBrightness() {
         return brightness;
     }
 
-    public void setBrightness(String brightness) {
+    public void setBrightness(int brightness) {
         this.brightness = brightness;
     }
 
-    public String getTemperature() {
+    public int getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(String temperature) {
+    public void setTemperature(int temperature) {
         this.temperature = temperature;
     }
 
