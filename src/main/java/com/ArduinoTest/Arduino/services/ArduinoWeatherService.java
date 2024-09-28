@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Service;
 
 import com.ArduinoTest.Arduino.models.ArduinoWeather;
+import com.ArduinoTest.Arduino.models.ArduinoWeatherData;
 
 @Service
 public class ArduinoWeatherService {
@@ -18,17 +19,19 @@ public class ArduinoWeatherService {
     @Autowired
     private MongoOperations mongoOperations;
 
-    public ArduinoWeather newArduinoWeatherEntry(int brightnessFromArduinoAsInt) {
+    public ArduinoWeather newArduinoWeatherEntry(ArduinoWeatherData arduinoWeatherData) {
         LocalDateTime dateTime = LocalDateTime.now();
 
         System.out.println("Detta är dagens datum :" + formatDate.format(dateTime));
         System.out.println("Detta är tiden just nu : " + formatTime.format(dateTime));
 
-        String brightnessNote = setBrightnessNote(brightnessFromArduinoAsInt);
+        String brightnessNote = setBrightnessNote(Integer.valueOf(arduinoWeatherData.getBrightness()));
         System.out.println("Jag är brightnessNote:  " + brightnessNote);
 
+        int brightnessFromArduinoAsInt = Integer.valueOf(arduinoWeatherData.getBrightness());
+
         ArduinoWeather arduinoWeather = new ArduinoWeather(brightnessNote, brightnessFromArduinoAsInt,
-                formatDate.format(dateTime), formatTime.format(dateTime));
+                formatDate.format(dateTime), formatTime.format(dateTime), arduinoWeatherData.getTemperature());
 
         return mongoOperations.save(arduinoWeather);
     }

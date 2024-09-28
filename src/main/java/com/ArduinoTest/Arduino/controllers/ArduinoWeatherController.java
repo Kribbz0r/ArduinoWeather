@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ArduinoTest.Arduino.models.ArduinoWeather;
+import com.ArduinoTest.Arduino.models.ArduinoWeatherData;
 import com.ArduinoTest.Arduino.services.ArduinoWeatherService;
 
 @RestController
@@ -17,12 +18,10 @@ public class ArduinoWeatherController {
     private ArduinoWeatherService arduinoService;
 
     @PostMapping("/test")
-    public ArduinoWeather addBrightnessToDatabase(@RequestBody String brightnessFromArduino) {
+    public ArduinoWeather addBrightnessToDatabase(@RequestBody ArduinoWeatherData arduinoWeatherData) {
 
-        System.out.println("Detta kom in i requestbody: " + brightnessFromArduino);
+        System.out.println("Detta kom in i requestbody: " + arduinoWeatherData);
 
-        int brightnessFromArduinoAsInt = Integer.valueOf(brightnessFromArduino);
-
-        return arduinoService.newArduinoWeatherEntry(brightnessFromArduinoAsInt);
+        return arduinoService.newArduinoWeatherEntry(arduinoWeatherData);
     }
 }
