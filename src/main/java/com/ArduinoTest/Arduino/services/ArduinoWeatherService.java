@@ -21,9 +21,6 @@ public class ArduinoWeatherService {
     private MongoOperations mongoOperations;
 
     public List<ArduinoWeather> getArduinoWeatherData() {
-        System.out.println("Här blev det också fel");
-        List<ArduinoWeather> nyLista = mongoOperations.findAll(ArduinoWeather.class);
-        System.out.println(nyLista);
 
         return mongoOperations.findAll(ArduinoWeather.class);
     }
@@ -36,9 +33,6 @@ public class ArduinoWeatherService {
 
         String brightnessNote = setBrightnessNote(arduinoWeatherData.getBrightness());
         System.out.println("Jag är brightnessNote:  " + brightnessNote);
-
-        // int brightnessFromArduinoAsInt =
-        // Integer.valueOf(arduinoWeatherData.getBrightness());
 
         ArduinoWeather arduinoWeather = new ArduinoWeather(brightnessNote, arduinoWeatherData.getBrightness(),
                 formatDate.format(dateTime), formatTime.format(dateTime), arduinoWeatherData.getTemperature());
