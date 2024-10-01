@@ -2,6 +2,7 @@ package com.ArduinoTest.Arduino.services;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
@@ -18,6 +19,14 @@ public class ArduinoWeatherService {
 
     @Autowired
     private MongoOperations mongoOperations;
+
+    public List<ArduinoWeather> getArduinoWeatherData() {
+        System.out.println("Här blev det också fel");
+        List<ArduinoWeather> nyLista = mongoOperations.findAll(ArduinoWeather.class);
+        System.out.println(nyLista);
+
+        return mongoOperations.findAll(ArduinoWeather.class);
+    }
 
     public ArduinoWeather newArduinoWeatherEntry(ArduinoWeatherData arduinoWeatherData) {
         LocalDateTime dateTime = LocalDateTime.now();
@@ -38,7 +47,6 @@ public class ArduinoWeatherService {
     }
 
     public String setBrightnessNote(int brightnessFromArduinoAsInt) {
-
         String brightnessNote = "";
 
         if (brightnessFromArduinoAsInt < 100) {

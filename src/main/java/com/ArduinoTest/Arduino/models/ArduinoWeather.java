@@ -3,7 +3,7 @@ package com.ArduinoTest.Arduino.models;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collation = "ArduinoWeather")
+@Document(collection = "ArduinoWeather")
 public class ArduinoWeather {
 
     @Id
