@@ -18,15 +18,21 @@ import com.ArduinoTest.Arduino.services.ArduinoWeatherService;
 public class ArduinoWeatherController {
 
     @Autowired
-    private ArduinoWeatherService arduinoService;
-
-    @PostMapping("/test")
-    public ArduinoWeather addBrightnessToDatabase(@RequestBody ArduinoWeatherData arduinoWeatherData) {
-        return arduinoService.newArduinoWeatherEntry(arduinoWeatherData);
-    }
+    private ArduinoWeatherService arduinoWeatherService;
 
     @GetMapping("/getWeatherData")
     public List<ArduinoWeather> getArduinoWeatherData() {
-        return arduinoService.getArduinoWeatherData();
+        return arduinoWeatherService.getArduinoWeatherData();
     }
+
+    @PostMapping("/test")
+    public ArduinoWeather addBrightnessToDatabase(@RequestBody ArduinoWeatherData arduinoWeatherData) {
+
+        System.out.println("SWEET SWEET SWEET SWEET SWEET SWEET");
+        System.out.println(arduinoWeatherData.toString());
+        System.out.println("SWEET SWEET SWEET SWEET SWEET SWEET");
+
+        return arduinoWeatherService.newArduinoWeatherEntry(arduinoWeatherData);
+    }
+
 }
