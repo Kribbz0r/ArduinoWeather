@@ -9,17 +9,23 @@ public class ArduinoError {
     private String id;
     private int statusCode;
     private String responseString;
-    private String date;
-    private String time;
+    private String dateTime;
 
     public ArduinoError() {
     }
 
-    public ArduinoError(int statusCode, String responseString, String date, String time) {
+    public ArduinoError(int statusCode, String responseString, String dateTime) {
         this.statusCode = statusCode;
         this.responseString = responseString;
-        this.date = date;
-        this.time = time;
+        this.dateTime = dateTime;
+    }
+
+    public String getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(String dateTime) {
+        this.dateTime = dateTime;
     }
 
     public String getId() {
@@ -44,22 +50,6 @@ public class ArduinoError {
 
     public void setResponseString(String responseString) {
         this.responseString = responseString;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
     }
 
 }

@@ -14,8 +14,7 @@ import com.ArduinoTest.Arduino.models.ArduinoWeatherData;
 @Service
 public class ArduinoWeatherService {
 
-    DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    DateTimeFormatter formatTime = DateTimeFormatter.ofPattern("HH:mm");
+    DateTimeFormatter formatDateTime = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
     @Autowired
     private MongoOperations mongoOperations;
@@ -28,14 +27,10 @@ public class ArduinoWeatherService {
     public ArduinoWeather newArduinoWeatherEntry(ArduinoWeatherData arduinoWeatherData) {
         LocalDateTime dateTime = LocalDateTime.now();
 
-        System.out.println("Detta är dagens datum :" + formatDate.format(dateTime));
-        System.out.println("Detta är tiden just nu : " + formatTime.format(dateTime));
-
         String brightnessNote = setBrightnessNote(arduinoWeatherData.getBrightness());
-        System.out.println("Jag är brightnessNote:  " + brightnessNote);
 
         ArduinoWeather arduinoWeather = new ArduinoWeather(brightnessNote, arduinoWeatherData.getBrightness(),
-                formatDate.format(dateTime), formatTime.format(dateTime), arduinoWeatherData.getTemperature());
+                formatDateTime.format(dateTime), arduinoWeatherData.getTemperature());
 
         return mongoOperations.save(arduinoWeather);
     }

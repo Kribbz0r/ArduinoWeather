@@ -1,5 +1,6 @@
 package com.ArduinoTest.Arduino.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,16 +15,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 @CrossOrigin("*")
 public class ArduinoErrorController {
 
+    @Autowired
     private ArduinoErrorService arduinoErrorService;
 
     @PostMapping("/error")
-    public ArduinoError newArduinoError(@RequestBody ArduinoErrorData arduinoError) {
+    public ArduinoError newArduinoError(@RequestBody ArduinoErrorData arduinoErrorData) {
 
-        System.out.println("ERROR ERROR ERROR ERROR ERROR ERROR");
-        System.out.println(arduinoError.toString());
-        System.out.println("ERROR ERROR ERROR ERROR ERROR ERROR");
-
-        return arduinoErrorService.newArduinoError(arduinoError);
+        return arduinoErrorService.newArduinoError(arduinoErrorData);
     }
 
 }

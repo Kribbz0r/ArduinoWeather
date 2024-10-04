@@ -13,21 +13,18 @@ import com.ArduinoTest.Arduino.models.ArduinoErrorData;
 @Service
 public class ArduinoErrorService {
 
-    DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    DateTimeFormatter formatTime = DateTimeFormatter.ofPattern("HH:mm");
+    DateTimeFormatter formatDateTime = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
     @Autowired
     private MongoOperations mongoOperations;
 
     public ArduinoError newArduinoError(ArduinoErrorData arduinoErrorData) {
-        LocalDateTime dateTime = LocalDateTime.now();
 
-        System.out.println("Detta är ERROR dagens datum :" + formatDate.format(dateTime));
-        System.out.println("Detta är ERROR tiden just nu : " + formatTime.format(dateTime));
+        LocalDateTime dateTime = LocalDateTime.now();
 
         ArduinoError arduinoError = new ArduinoError(arduinoErrorData.getStatusCode(),
                 arduinoErrorData.getResponseString(),
-                formatDate.format(dateTime), formatTime.format(dateTime));
+                formatDateTime.format(dateTime));
 
         return mongoOperations.save(arduinoError);
     }

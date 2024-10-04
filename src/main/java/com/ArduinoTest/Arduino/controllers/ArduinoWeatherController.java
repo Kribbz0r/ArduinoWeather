@@ -28,11 +28,6 @@ public class ArduinoWeatherController {
     @PostMapping("/test")
     public ArduinoWeather addBrightnessToDatabase(@RequestBody ArduinoWeatherData arduinoWeatherData) {
 
-        System.out.println("SWEET SWEET SWEET SWEET SWEET SWEET");
-        System.out.println(arduinoWeatherData.toString());
-        System.out.println("SWEET SWEET SWEET SWEET SWEET SWEET");
-
         return arduinoWeatherService.newArduinoWeatherEntry(arduinoWeatherData);
     }
-
 }

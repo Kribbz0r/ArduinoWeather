@@ -10,19 +10,17 @@ public class ArduinoWeather {
     private String id;
     private String brightnessNote;
     private int brightnessValue;
-    private String date;
-    private String time;
+    private String dateTime;
     private int temperature;
 
     public ArduinoWeather() {
     }
 
-    public ArduinoWeather(String brightnessNote, int brightnessValue, String date,
-            String time, int temperature) {
+    public ArduinoWeather(String brightnessNote, int brightnessValue, String dateTime,
+            int temperature) {
         this.brightnessNote = brightnessNote;
         this.brightnessValue = brightnessValue;
-        this.date = date;
-        this.time = time;
+        this.dateTime = dateTime;
         this.temperature = temperature;
     }
 
@@ -50,28 +48,20 @@ public class ArduinoWeather {
         this.brightnessValue = brightnessValue;
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
     public int getTemperature() {
         return temperature;
     }
 
     public void setTemperature(int temperature) {
         this.temperature = temperature;
+    }
+
+    public String getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(String dateTime) {
+        this.dateTime = dateTime;
     }
 
 }
